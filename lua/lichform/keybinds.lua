@@ -56,5 +56,5 @@ map('n', '<leader>qf', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 
 map('n', '<leader>oc', '<cmd>lua open_file("~/.config/nvim/init.lua")<cr>')
 map('n', '<leader>ok', '<cmd>lua open_file("~/.config/nvim/lua/lichform/keybinds.lua")<cr>')
-map('n', '<leader>op', '<cmd>lua open_file("~/.config/nvim/lua/lichform/plugins.lua")<cr>')
+map('n', '<leader>op', '<cmd>lua open_file("~/.config/nvim/lua/lichform/packer.lua")<cr>')
 
