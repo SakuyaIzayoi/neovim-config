@@ -11,3 +11,6 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 vim.keymap.set('n', '<leader>gd', builtin.diagnostics, {})
+vim.keymap.set('n', '<leader>gk', builtin.keymaps, {})
+vim.keymap.set('n', '<leader>gr', builtin.registers, {})
+
