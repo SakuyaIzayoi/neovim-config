@@ -40,3 +40,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+if vim.g.neovide then
+    vim.o.guifont = "FiraCode NFM"
+end
+
