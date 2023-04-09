@@ -11,6 +11,12 @@ cmp.setup({
 
   -- ... Your other configuration ...
 
+  sources = {
+      {name = 'path'},
+      {name = 'nvim_lsp'},
+      {name = 'buffer', keyword_length = 3},
+      {name = 'luasnip', keyword_length = 2},
+  },
   mapping = {
 
     -- ... Your other mappings ...
