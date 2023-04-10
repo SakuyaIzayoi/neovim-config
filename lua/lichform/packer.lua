@@ -63,5 +63,6 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
+    use {'lvimuser/lsp-inlayhints.nvim'}
 end)
 
