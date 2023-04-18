@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
-    use {'xiyaowong/nvim-transparent'}
+    use { 'xiyaowong/nvim-transparent' }
     use { 'ThePrimeagen/harpoon' }
     use { 'mbbill/undotree' }
     use { 'IndianBoy42/tree-sitter-just' }
@@ -64,5 +64,11 @@ return require('packer').startup(function(use)
         }
     }
     use {'lvimuser/lsp-inlayhints.nvim'}
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function ()
+            require('gitsigns').setup()
+        end
+    }
 end)
 
