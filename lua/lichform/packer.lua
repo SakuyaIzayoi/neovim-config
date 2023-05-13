@@ -64,7 +64,6 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
-    --use {'lvimuser/lsp-inlayhints.nvim'}
     use {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -77,4 +76,5 @@ return require('packer').startup(function(use)
         config = function()
             require("trouble").setup {}
         end }
+    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 end)

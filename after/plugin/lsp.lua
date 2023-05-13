@@ -1,16 +1,5 @@
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+local lsp = require('lsp-zero').preset({})
 lsp.nvim_workspace()
-
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
 
 -- rust-tools uses nvim-lspconfig under the hood so skip lsp-zero's config
 lsp.skip_server_setup({ 'rust-analyzer' })
@@ -30,11 +19,9 @@ rt.setup({
     },
 })
 
-lsp.setup()
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
--- Treesitter folding
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+lsp.setup()
 
 -- Trouble
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
