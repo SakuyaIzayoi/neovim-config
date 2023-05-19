@@ -77,4 +77,11 @@ return require('packer').startup(function(use)
             require("trouble").setup {}
         end }
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+    use {
+        'startup-nvim/startup.nvim',
+        requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
+        config = function()
+            require("startup").setup({theme = "lichform"})
+        end
+    }
 end)

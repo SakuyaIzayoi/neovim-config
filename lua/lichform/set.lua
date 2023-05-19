@@ -41,3 +41,10 @@ if vim.g.neovide then
     vim.o.guifont = "FiraCode NFM"
 end
 
+-- Bookmarks for startup
+vim.g.startup_bookmarks = {
+    ["P"] = '~/AppData/Local/nvim/lua/lichform/packer.lua',
+    ["K"] = '~/AppData/Local/nvim/lua/lichform/keybinds.lua',
+    ["L"] = '~/AppData/Local/nvim/after/plugin/lsp.lua',
+}
+
