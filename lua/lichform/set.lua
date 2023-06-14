@@ -19,6 +19,14 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
     local homedir = os.getenv("UserProfile")
     vim.opt.undodir = homedir .. "/.vim/undodir"
     vim.api.nvim_set_current_dir(homedir .. "/Desktop/dev")
+
+    -- PowerShell
+    vim.opt.shell = "pwsh.exe"
+    vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
+    vim.opt.shellxquote = ""
+    vim.opt.shellquote = ""
+    vim.opt.shellpipe = "| Out-File -Encoding UTF8 %s"
+    vim.opt.shellredir = "| Out-File -Encoding UTF8 %s"
 else
     vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 end
@@ -41,10 +49,11 @@ if vim.g.neovide then
     vim.o.guifont = "FiraCode NFM"
 end
 
+local config_dir = vim.fn.stdpath('config')
 -- Bookmarks for startup
 vim.g.startup_bookmarks = {
-    ["P"] = '~/AppData/Local/nvim/lua/lichform/packer.lua',
-    ["K"] = '~/AppData/Local/nvim/lua/lichform/keybinds.lua',
-    ["L"] = '~/AppData/Local/nvim/after/plugin/lsp.lua',
+    ["P"] = config_dir .. '/lua/lichform/packer.lua',
+    ["K"] = config_dir .. '/lua/lichform/keybinds.lua',
+    ["L"] = config_dir .. '/after/plugin/lsp.lua',
 }
 
