@@ -20,6 +20,7 @@ return require('packer').startup(function(use)
     }
     use 'jiangmiao/auto-pairs'
     use 'sainnhe/gruvbox-material'
+    use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
