@@ -3,7 +3,7 @@ require('lualine').setup {
         lualine_z = { "os.date('%a %I:%M%p')" }
     },
     options = {
-        theme = 'gruvbox-material'
+        theme = 'rose-pine'
     },
     extensions = {'nvim-tree'}
 }
