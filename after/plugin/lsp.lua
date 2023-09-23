@@ -19,7 +19,16 @@ rt.setup({
     },
 })
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+require('neodev').setup({})
+require('lspconfig').lua_ls.setup({
+    settings = {
+        Lua = {
+            completion = {
+                callSnippet = "Replace"
+            }
+        }
+    }
+})
 
 lsp.setup()
 

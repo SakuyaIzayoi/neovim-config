@@ -85,4 +85,5 @@ return require('packer').startup(function(use)
             require("startup").setup({theme = "lichform"})
         end
     }
+    use { 'folke/neodev.nvim' }
 end)
