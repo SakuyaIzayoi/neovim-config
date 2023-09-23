@@ -65,3 +65,6 @@ if vim.g.neovide then
     vim.keymap.set('i', '<C-v>', '<ESC>l"+Pli')
 end
 
+-- Toggle transparency
+map('n', '<leader>tt', '<cmd>TransparentToggle<cr>')
+
