@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
     use { 'rose-pine/neovim', as = 'rose-pine' }
     use { 'dstein64/vim-startuptime', cmd = { 'StartupTime' } }
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } } }
     use {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -34,7 +34,11 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     use { 'xiyaowong/nvim-transparent' }
-    use { 'ThePrimeagen/harpoon' }
+    use {
+        'ThePrimeagen/harpoon',
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
     use { 'mbbill/undotree' }
     use { 'IndianBoy42/tree-sitter-just' }
 
@@ -82,7 +86,7 @@ return require('packer').startup(function(use)
         'startup-nvim/startup.nvim',
         requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
         config = function()
-            require("startup").setup({theme = "lichform"})
+            require("startup").setup({ theme = "lichform" })
         end
     }
     use { 'folke/neodev.nvim' }
