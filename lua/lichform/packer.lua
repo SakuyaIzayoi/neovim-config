@@ -75,7 +75,6 @@ return require('packer').startup(function(use)
             require('gitsigns').setup()
         end
     }
-    use { 'simrat39/rust-tools.nvim' }
     use { 'folke/trouble.nvim',
         requires = 'nvim-tree/nvim-web-devicons',
         config = function()
@@ -90,4 +89,8 @@ return require('packer').startup(function(use)
         end
     }
     use { 'folke/neodev.nvim' }
+    use {
+        'mrcjkb/rustaceanvim',
+        tag = '4.*'
+    }
 end)

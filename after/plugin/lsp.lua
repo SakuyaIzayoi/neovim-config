@@ -1,21 +1,17 @@
-local lsp = require('lsp-zero').preset({})
-lsp.nvim_workspace()
+local lsp_zero = require('lsp-zero')
+lsp_zero.on_attach(function(client, bufnr)
+    lsp_zero.default_keymaps({buffer = bufnr})
+end)
 
--- rust-tools uses nvim-lspconfig under the hood so skip lsp-zero's config
-lsp.skip_server_setup({ 'rust-analyzer' })
-local rt = require('rust-tools')
-rt.setup({
-    server = {
-        on_attach = function(_, bufnr)
-            vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    handlers = {
+        lsp_zero.default_setup,
+        lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
         end,
-        settings = {
-            ["rust-analyzer"] = {
-                checkOnSave = {
-                    command = "clippy"
-                },
-            },
-        },
+        rust_analyzer = lsp_zero.noop,
     },
 })
 
@@ -33,7 +29,7 @@ require('lspconfig').lua_ls.setup({
     }
 })
 
-lsp.setup()
+lsp_zero.setup()
 
 -- Trouble
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
