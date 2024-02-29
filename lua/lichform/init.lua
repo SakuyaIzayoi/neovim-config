@@ -1,4 +1,4 @@
 -- Lichform
-require("lichform.packer")
+require("lichform.plugins")
 require("lichform.set")
 require("lichform.keybinds")
