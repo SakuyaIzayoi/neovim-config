@@ -52,7 +52,7 @@ end
 local config_dir = vim.fn.stdpath('config')
 -- Bookmarks for startup
 vim.g.startup_bookmarks = {
-    ["P"] = config_dir .. '/lua/lichform/packer.lua',
+    ["P"] = config_dir .. '/lua/lichform/plugins.lua',
     ["K"] = config_dir .. '/lua/lichform/keybinds.lua',
     ["L"] = config_dir .. '/after/plugin/lsp.lua',
 }

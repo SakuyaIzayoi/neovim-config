@@ -70,9 +70,6 @@ require("lazy").setup({
     {
         'folke/trouble.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        build = function ()
-            require('trouble').setup {}
-        end,
     },
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     {
@@ -81,7 +78,7 @@ require("lazy").setup({
             'nvim-telescope/telescope.nvim',
             'nvim-lua/plenary.nvim',
         },
-        build = function ()
+        config = function ()
             require('startup').setup({ theme = 'lichform' })
         end,
     },
