@@ -20,8 +20,8 @@ require("lazy").setup({
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
     'nvim-tree/nvim-web-devicons',
     'nvim-tree/nvim-tree.lua',
-    { 'akinsho/bufferline.nvim', tag = 'v4.*', dependencies = {'nvim-tree/nvim-web-devicons'} },
-    { 'kylechui/nvim-surround', tag = '*', config = function() require('nvim-surround').setup({}) end },
+    { 'akinsho/bufferline.nvim', tag = 'v4.5.0', dependencies = {'nvim-tree/nvim-web-devicons'} },
+    { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup({}) end },
     'jiangmiao/auto-pairs',
     'sainnhe/gruvbox-material',
     { 'rose-pine/neovim', name = 'rose-pine' },
@@ -83,8 +83,5 @@ require("lazy").setup({
         end,
     },
     'folke/neodev.nvim',
-    {
-        'mrcjkb/rustaceanvim',
-        tag = '4.*'
-    }
+    'mrcjkb/rustaceanvim',
 })
