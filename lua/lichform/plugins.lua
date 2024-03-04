@@ -18,13 +18,19 @@ require("lazy").setup({
     { 'hashivim/vim-terraform', ft = 'terraform' },
     { 'pearofducks/ansible-vim', ft = 'yaml' },
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
-    'nvim-tree/nvim-web-devicons',
-    'nvim-tree/nvim-tree.lua',
+    {
+        'nvim-tree/nvim-web-devicons',
+        lazy = true,
+    },
+    {
+        'nvim-tree/nvim-tree.lua',
+        cmd = 'NvimTreeToggle',
+    },
     { 'akinsho/bufferline.nvim', tag = 'v4.5.0', dependencies = {'nvim-tree/nvim-web-devicons'} },
     { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup({}) end },
     'jiangmiao/auto-pairs',
     'sainnhe/gruvbox-material',
-    { 'rose-pine/neovim', name = 'rose-pine' },
+    { 'rose-pine/neovim', name = 'rose-pine', priority = 1000 },
     { 'dstein64/vim-startuptime', cmd = "StartupTime" },
     { 'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
@@ -49,9 +55,14 @@ require("lazy").setup({
             'williamboman/mason-lspconfig.nvim',
 
             -- Autocomplete
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
+            {
+                'hrsh7th/nvim-cmp',
+                event = "InsertEnter",
+                dependencies = {
+                    'hrsh7th/cmp-buffer',
+                    'hrsh7th/cmp-path',
+                }
+            },
             'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
