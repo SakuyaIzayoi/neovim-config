@@ -26,18 +26,44 @@ require("lazy").setup({
         'nvim-tree/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
     },
-    { 'akinsho/bufferline.nvim', tag = 'v4.5.0', dependencies = {'nvim-tree/nvim-web-devicons'} },
-    { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup({}) end },
+    {
+        'akinsho/bufferline.nvim',
+        tag = 'v4.5.0',
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+        config = function() require('bufferline').setup() end,
+    },
+    { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup() end },
     'jiangmiao/auto-pairs',
     'sainnhe/gruvbox-material',
     { 'rose-pine/neovim', name = 'rose-pine', priority = 1000 },
     { 'dstein64/vim-startuptime', cmd = "StartupTime" },
     { 'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' } },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function() require('lualine').setup({
+            sections = {
+                lualine_z = { 'os.date("%a %I:%M%p")' },
+            },
+            options = {
+                theme = 'rose-pine',
+            },
+            extensions = { 'nvim-tree' }
+        })
+        end,
+    },
     'xiyaowong/nvim-transparent',
     { 'ThePrimeagen/harpoon', branch = 'harpoon2', dependencies = { 'nvim-lua/plenary.nvim' } },
-    'mbbill/undotree',
+    {
+        'mbbill/undotree',
+        keys = {
+            { '<leader>u', '<cmd>UndotreeToggle<cr>', desc = "UndoTree" },
+        },
+    },
     'IndianBoy42/tree-sitter-just',
 
     -- LSP
