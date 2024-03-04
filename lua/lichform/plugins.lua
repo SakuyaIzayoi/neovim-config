@@ -13,7 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ","
 require("lazy").setup({
-    'aserowy/tmux.nvim',
+    {
+        'aserowy/tmux.nvim',
+        config = function()
+            require('tmux').setup()
+        end,
+    },
     { 'nathangrigg/vim-beancount', ft = 'beancount' },
     { 'hashivim/vim-terraform', ft = 'terraform' },
     { 'pearofducks/ansible-vim', ft = 'yaml' },

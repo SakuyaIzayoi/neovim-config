@@ -7,5 +7,3 @@ require('lichform')
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require('tmux').setup()
-
