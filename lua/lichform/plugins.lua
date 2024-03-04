@@ -124,5 +124,8 @@ require("lazy").setup({
         end,
     },
     'folke/neodev.nvim',
-    'mrcjkb/rustaceanvim',
+    {
+        'mrcjkb/rustaceanvim',
+        ft = 'rust',
+    }
 })
