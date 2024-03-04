@@ -51,6 +51,13 @@ require("lazy").setup({
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('lualine').setup({
             sections = {
+                lualine_x = {
+                    {
+                        require('lazy.status').updates,
+                        cond = require('lazy.status').has_updates,
+                        color = { fg = '#f6c177' },
+                    },
+                },
                 lualine_z = { 'os.date("%a %I:%M%p")' },
             },
             options = {
@@ -127,5 +134,10 @@ require("lazy").setup({
     {
         'mrcjkb/rustaceanvim',
         ft = 'rust',
+    }
+},
+{
+    checker = {
+        enabled = true,
     }
 })
