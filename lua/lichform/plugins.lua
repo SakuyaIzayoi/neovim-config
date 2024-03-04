@@ -25,6 +25,10 @@ require("lazy").setup({
     {
         'nvim-tree/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
+        keys = {
+            { '<F8>', '<cmd>NvimTreeToggle<cr>', desc = "Toggle NvimTree" },
+        },
+        config = function() require('nvim-tree').setup() end,
     },
     {
         'akinsho/bufferline.nvim',
