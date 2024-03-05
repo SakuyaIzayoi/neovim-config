@@ -82,38 +82,95 @@ require("lazy").setup({
     },
     'IndianBoy42/tree-sitter-just',
 
-    -- LSP
+    -- BEGIN LSP
     {
         'VonHeikemen/lsp-zero.nvim',
-        dependencies = {
-            -- Basic LSP Support
-            'neovim/nvim-lspconfig',
-            {
-                'williamboman/mason.nvim',
-                build = function()
-                    pcall(vim.cmd, 'MasonUpdate')
-                end,
-            },
-            'williamboman/mason-lspconfig.nvim',
-
-            -- Autocomplete
-            {
-                'hrsh7th/nvim-cmp',
-                event = "InsertEnter",
-                dependencies = {
-                    'hrsh7th/cmp-buffer',
-                    'hrsh7th/cmp-path',
-                }
-            },
-            'saadparwaiz1/cmp_luasnip',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua',
-
-            -- Snippets
-            'L3MON4D3/LuaSnip',
-            'rafamadriz/friendly-snippets'
-        },
+        lazy = true,
+        init = function()
+            vim.g.lsp_zero_extend_cmp = 0
+            vim.g.lsp_zero_extend_lspconfig = 0
+        end,
     },
+    {
+        'williamboman/mason.nvim',
+        lazy = false,
+        config = true,
+    },
+    -- Autocomplete
+    {
+        'hrsh7th/nvim-cmp',
+        event = "InsertEnter",
+        dependencies = {
+            'L3MON4D3/LuaSnip',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+        },
+        config = function()
+            local lsp_zero = require('lsp-zero')
+            lsp_zero.extend_cmp()
+
+            local cmp = require('cmp')
+            local cmp_action = require('lsp-zero').cmp_action()
+
+            require('luasnip.loaders.from_vscode').lazy_load()
+
+            cmp.setup({
+                preselect = 'item',
+                completion = {
+                    completeopt = 'menu,menuone,noinsert'
+                },
+                sources = {
+                    {name = 'path'},
+                    {name = 'nvim_lsp'},
+                    {name = 'nvim_lua'},
+                    {name = 'buffer', keyword_length = 3},
+                    {name = 'luasnip', keyword_length = 2},
+                },
+                mapping = {
+                    ['<CR>'] = cmp.mapping.confirm({select = false}),
+                    ["<Tab>"] = cmp_action.luasnip_supertab(),
+                    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+                },
+            })
+        end,
+    },
+    'saadparwaiz1/cmp_luasnip',
+    'hrsh7th/cmp-nvim-lua',
+
+    -- Snippets
+    'rafamadriz/friendly-snippets',
+
+    -- LSP
+    {
+        'neovim/nvim-lspconfig',
+        cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'williamboman/mason-lspconfig.nvim',
+        },
+        config = function()
+            local lsp_zero = require('lsp-zero')
+            lsp_zero.extend_lspconfig()
+
+            lsp_zero.on_attach(function(client, bufnr)
+                lsp_zero.default_keymaps({buffer = bufnr})
+            end)
+
+            require('mason-lspconfig').setup({
+                ensure_installed = {},
+                handlers = {
+                    lsp_zero.default_setup,
+                    lua_ls = function()
+                        local lua_opts = lsp_zero.nvim_lua_ls()
+                        require('lspconfig').lua_ls.setup(lua_opts)
+                    end,
+                    rust_analyzer = lsp_zero.noop,
+                }
+            })
+        end,
+    },
+    -- END LSP
     {
         'lewis6991/gitsigns.nvim',
         config = function()
@@ -123,6 +180,9 @@ require("lazy").setup({
     {
         'folke/trouble.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
+        keys = {
+            { '<leader>xx', '<cmd>TroubleToggle<cr>', noremap = true },
+        },
     },
     { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     {
@@ -135,7 +195,10 @@ require("lazy").setup({
             require('startup').setup({ theme = 'lichform' })
         end,
     },
-    'folke/neodev.nvim',
+    {
+        'folke/neodev.nvim',
+        config = function() require('neodev').setup({}) end
+    },
     {
         'mrcjkb/rustaceanvim',
         ft = 'rust',

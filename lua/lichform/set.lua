@@ -57,3 +57,7 @@ vim.g.startup_bookmarks = {
     ["L"] = config_dir .. '/after/plugin/lsp.lua',
 }
 
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
