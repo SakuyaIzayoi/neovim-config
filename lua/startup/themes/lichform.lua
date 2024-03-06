@@ -58,6 +58,7 @@ local settings = {
             { " Recent Files", "Telescope oldfiles", "<leader>of" },
             { " File Browser", "Telescope file_browser", "<leader>fb" },
             { " New File", "lua require'startup'.new_file()", "<leader>nf" },
+            { " Lazy", "Lazy", "<leader>L" },
         },
         highlight = "String",
         default_color = "",

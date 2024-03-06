@@ -54,7 +54,6 @@ local config_dir = vim.fn.stdpath('config')
 vim.g.startup_bookmarks = {
     ["P"] = config_dir .. '/lua/lichform/plugins.lua',
     ["K"] = config_dir .. '/lua/lichform/keybinds.lua',
-    ["L"] = config_dir .. '/after/plugin/lsp.lua',
 }
 
 vim.diagnostic.config({
