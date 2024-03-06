@@ -61,8 +61,29 @@ require("lazy").setup({
     },
     { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup() end },
     'jiangmiao/auto-pairs',
-    'sainnhe/gruvbox-material',
-    { 'rose-pine/neovim', name = 'rose-pine', priority = 1000 },
+    {
+        'sainnhe/gruvbox-material',
+        config = function()
+            vim.g.gruvbox_material_background = 'medium'
+            vim.g.gruvbox_material_foreground = 'material'
+            vim.g.gruvbox_material_enable_bold = true
+            --vim.g.gruvbox_material_transparent_background = true
+            vim.g.gruvbox_material_diagnostic_text_highlight = true
+            vim.g.gruvbox_material_diagnostic_line_highlight = true
+        end
+    },
+    {
+        'rose-pine/neovim',
+        name = 'rose-pine',
+        priority = 1000,
+        config = function()
+            vim.opt.termguicolors = true
+            require('rose-pine').setup({
+                ['@variable'] = { italic = false },
+            })
+            vim.cmd('colorscheme rose-pine')
+        end,
+    },
     { 'dstein64/vim-startuptime', cmd = "StartupTime" },
     {
         'nvim-telescope/telescope.nvim',
@@ -111,7 +132,15 @@ require("lazy").setup({
         })
         end,
     },
-    'xiyaowong/nvim-transparent',
+    {
+        'xiyaowong/nvim-transparent',
+        keys = {
+            { '<leader>tt', '<cmd>TransparentToggle<cr>', desc = 'TransparentToggle' },
+        },
+        config = function()
+            require('transparent').setup()
+        end,
+    },
     { 'ThePrimeagen/harpoon', branch = 'harpoon2', dependencies = { 'nvim-lua/plenary.nvim' } },
     {
         'mbbill/undotree',
