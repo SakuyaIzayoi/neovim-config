@@ -16,6 +16,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('lichform.plugins')
+local lazy_opts = {
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+}
+
+require('lazy').setup('lichform.plugins', lazy_opts)
 require('lichform.set')
 require('lichform.keybinds')
