@@ -1,19 +1,10 @@
 -- Keybinds
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true, silent = true}
+    local options = { noremap = true, silent = true }
     if opts then
         options = vim.tbl_extend('force', options, opts)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-
-function _G.open_file(f)
-    vim.cmd('e ' .. f)
 end
 
 map('n', '<leader><space>', '<cmd>noh<cr>')
