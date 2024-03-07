@@ -43,19 +43,11 @@ map('n', 'Q', '<nop>')
 -- Paste buffer trickery
 map('x', '<leader>p', '\"_dP')
 
--- Common keybinds
-map('n', '<F8>', '<cmd>NvimTreeToggle<cr>')
-
---map('n', '<leader>af', '<cmd>ALEFix<cr>')
 vim.keymap.set('n', '<leader>af', function()
     vim.lsp.buf.format()
 end)
 
 map('n', '<leader>qf', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-
-map('n', '<leader>oc', '<cmd>lua open_file("~/.config/nvim/init.lua")<cr>')
-map('n', '<leader>ok', '<cmd>lua open_file("~/.config/nvim/lua/lichform/keybinds.lua")<cr>')
-map('n', '<leader>op', '<cmd>lua open_file("~/.config/nvim/lua/lichform/packer.lua")<cr>')
 
 -- Neovide keybinds
 if vim.g.neovide then
