@@ -9,7 +9,8 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        lazy = false,
+        cmd = 'Mason',
+        build = ':MasonUpdate',
         config = true,
     },
     -- Autocomplete
@@ -27,6 +28,7 @@ return {
             'hrsh7th/cmp-path',
             'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-nvim-lsp',
         },
         config = function()
             local lsp_zero = require('lsp-zero')
@@ -57,16 +59,15 @@ return {
             })
         end,
     },
-
+    {
+        'williamboman/mason-lspconfig.nvim',
+        lazy = true,
+    },
     -- LSP
     {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
         event = { 'BufReadPre', 'BufNewFile' },
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'williamboman/mason-lspconfig.nvim',
-        },
         config = function()
             local lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()

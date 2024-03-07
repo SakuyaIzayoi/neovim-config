@@ -11,6 +11,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
+        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
         config = function()
             require('nvim-treesitter.configs').setup({
                 auto_install = true,
@@ -30,6 +31,10 @@ return {
             })
         end,
     },
+    {
+        'IndianBoy42/tree-sitter-just',
+        ft = 'just',
+    },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     {
         'nvim-tree/nvim-tree.lua',
@@ -45,9 +50,22 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('bufferline').setup() end,
     },
-    { 'kylechui/nvim-surround',      config = function() require('nvim-surround').setup() end },
-    'jiangmiao/auto-pairs',
-    { 'dstein64/vim-startuptime', cmd = "StartupTime" },
+    {
+        'kylechui/nvim-surround',
+        event = 'InsertEnter',
+        config = function()
+            require('nvim-surround').setup()
+        end
+    },
+    {
+        'altermo/ultimate-autopair.nvim',
+        event = { 'InsertEnter', 'CmdlineEnter' },
+        branch = 'v0.6',
+        config = function()
+            require('ultimate-autopair').setup()
+        end
+    },
+    { 'dstein64/vim-startuptime',    cmd = "StartupTime" },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -76,9 +94,9 @@ return {
             { '<leader>u', '<cmd>UndotreeToggle<cr>', desc = "UndoTree" },
         },
     },
-    'IndianBoy42/tree-sitter-just',
     {
         'lewis6991/gitsigns.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             require('gitsigns').setup()
         end
@@ -93,6 +111,7 @@ return {
     {
         'kevinhwang91/nvim-ufo',
         dependencies = 'kevinhwang91/promise-async',
+        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
         config = function()
             vim.o.foldcolumn = '0'
             vim.o.foldlevel = 99
@@ -118,6 +137,7 @@ return {
     },
     {
         'folke/neodev.nvim',
+        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
         config = function() require('neodev').setup({}) end
     },
     {
