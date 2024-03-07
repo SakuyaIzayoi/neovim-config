@@ -21,10 +21,6 @@ map('n', '<leader><space>', '<cmd>noh<cr>')
 -- Buffer/Window Movement
 map('n', '<A-N>', '<cmd>bnext<cr>')
 map('n', '<A-P>', '<cmd>bprev<cr>')
-map('n', '<C-H>', '<C-w>h')
-map('n', '<C-J>', '<C-w>j')
-map('n', '<C-K>', '<C-w>k')
-map('n', '<C-L>', '<C-w>l')
 
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
