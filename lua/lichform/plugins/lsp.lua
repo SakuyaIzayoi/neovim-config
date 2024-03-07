@@ -25,6 +25,8 @@ return {
             },
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lua',
         },
         config = function()
             local lsp_zero = require('lsp-zero')
@@ -55,8 +57,6 @@ return {
             })
         end,
     },
-    'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lua',
 
     -- LSP
     {
