@@ -22,10 +22,9 @@ require("lazy").setup({
     { 'nathangrigg/vim-beancount', ft = 'beancount' },
     { 'hashivim/vim-terraform', ft = 'terraform' },
     { 'pearofducks/ansible-vim', ft = 'yaml' },
-    { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" },
     {
-        'nvim-tree/nvim-web-devicons',
-        lazy = true,
+        'nvim-treesitter/nvim-treesitter',
+        build = ":TSUpdate",
         config = function ()
             require('nvim-treesitter.configs').setup({
                 auto_install = true,
@@ -43,8 +42,9 @@ require("lazy").setup({
                 },
                 modules = {},
             })
-        end
+        end,
     },
+    { 'nvim-tree/nvim-web-devicons', lazy = true },
     {
         'nvim-tree/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
