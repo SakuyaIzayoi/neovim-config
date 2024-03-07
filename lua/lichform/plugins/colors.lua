@@ -1,6 +1,7 @@
 return {
     {
         'sainnhe/gruvbox-material',
+        enabled = false,
         config = function()
             vim.g.gruvbox_material_background = 'medium'
             vim.g.gruvbox_material_foreground = 'material'
