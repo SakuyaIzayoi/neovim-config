@@ -16,7 +16,6 @@ return {
         name = 'rose-pine',
         priority = 1000,
         config = function()
-            vim.opt.termguicolors = true
             require('rose-pine').setup({
                 ['@variable'] = { italic = false },
             })
