@@ -111,8 +111,4 @@ return {
         event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
         config = function() require('neodev').setup({}) end
     },
-    {
-        'mrcjkb/rustaceanvim',
-        ft = 'rust',
-    }
 }

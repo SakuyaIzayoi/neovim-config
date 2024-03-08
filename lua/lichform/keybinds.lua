@@ -32,7 +32,8 @@ vim.keymap.set('n', '<leader>af', function()
     vim.lsp.buf.format()
 end)
 
-map('n', '<leader>qf', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<leader>qf', function() vim.lsp.buf.code_action() end,
+    { noremap = true, silent = true, desc = 'LSP Code Action' })
 
 -- Neovide keybinds
 if vim.g.neovide then
@@ -41,3 +42,7 @@ if vim.g.neovide then
     vim.keymap.set('i', '<C-v>', '<ESC>l"+Pli')
 end
 
+vim.keymap.set('n', '<leader>tih', function()
+    vim.g.inlay_hints_enabled = not vim.g.inlay_hints_enabled
+    vim.lsp.inlay_hint.enable(0, vim.g.inlay_hints_enabled)
+end, { noremap = true, silent = true, desc = 'Toggle Inlay Hints' })

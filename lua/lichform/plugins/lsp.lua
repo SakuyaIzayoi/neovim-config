@@ -116,8 +116,11 @@ return {
             local lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()
 
+            vim.g.inlay_hints_enabled = true
+
             lsp_zero.on_attach(function(client, bufnr)
                 lsp_zero.default_keymaps({ buffer = bufnr })
+                vim.lsp.inlay_hint.enable(bufnr, true)
             end)
 
             require('mason-lspconfig').setup({
@@ -133,4 +136,19 @@ return {
             })
         end,
     },
+    {
+        'mrcjkb/rustaceanvim',
+        dependencies = {
+            'mfussenegger/nvim-dap',
+        },
+        ft = 'rust',
+        config = function ()
+            local lsp_zero = require('lsp-zero')
+            vim.g.rustaceanvim = {
+                server = {
+                    capabilities = lsp_zero.get_capabilities()
+                },
+            }
+        end,
+    }
 }
