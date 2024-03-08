@@ -8,33 +8,6 @@ return {
     { 'nathangrigg/vim-beancount', ft = 'beancount' },
     { 'hashivim/vim-terraform',    ft = 'terraform' },
     { 'pearofducks/ansible-vim',   ft = 'yaml' },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ":TSUpdate",
-        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-        config = function()
-            require('nvim-treesitter.configs').setup({
-                auto_install = true,
-                sync_install = false,
-                ignore_install = {},
-                highlight = {
-                    enable = true,
-                },
-                ensure_installed = {
-                    'c',
-                    'lua',
-                    'vim',
-                    'vimdoc',
-                    'query',
-                },
-                modules = {},
-            })
-        end,
-    },
-    {
-        'IndianBoy42/tree-sitter-just',
-        ft = 'just',
-    },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     {
         'nvim-tree/nvim-tree.lua',
@@ -69,24 +42,22 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require('lualine').setup({
-                sections = {
-                    lualine_x = {
-                        {
-                            require('lazy.status').updates,
-                            cond = require('lazy.status').has_updates,
-                            color = { fg = '#f6c177' },
-                        },
+        opts = {
+            sections = {
+                lualine_x = {
+                    {
+                        require('lazy.status').updates,
+                        cond = require('lazy.status').has_updates,
+                        color = { fg = '#f6c177' },
                     },
-                    lualine_z = { 'os.date("%a %I:%M%p")' },
                 },
-                options = {
-                    theme = 'rose-pine',
-                },
-                extensions = { 'nvim-tree' }
-            })
-        end,
+                lualine_z = { 'os.date("%a %I:%M%p")' },
+            },
+            options = {
+                theme = 'rose-pine',
+            },
+            extensions = { 'nvim-tree' }
+        }
     },
     {
         'mbbill/undotree',
@@ -131,9 +102,9 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim',
         },
-        config = function()
-            require('startup').setup({ theme = 'lichform' })
-        end,
+        opts = {
+            theme = 'lichform',
+        },
     },
     {
         'folke/neodev.nvim',
