@@ -5,9 +5,9 @@ return {
             require('tmux').setup()
         end,
     },
-    { 'nathangrigg/vim-beancount', ft = 'beancount' },
-    { 'hashivim/vim-terraform',    ft = 'terraform' },
-    { 'pearofducks/ansible-vim',   ft = 'yaml' },
+    { 'nathangrigg/vim-beancount',   ft = 'beancount' },
+    { 'hashivim/vim-terraform',      ft = 'terraform' },
+    { 'pearofducks/ansible-vim',     ft = 'yaml' },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     {
         'nvim-tree/nvim-tree.lua',
@@ -38,7 +38,7 @@ return {
             require('ultimate-autopair').setup()
         end
     },
-    { 'dstein64/vim-startuptime',    cmd = "StartupTime" },
+    { 'dstein64/vim-startuptime', cmd = "StartupTime" },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -54,10 +54,11 @@ return {
                 lualine_z = { 'os.date("%a %I:%M%p")' },
             },
             options = {
-                theme = 'rose-pine',
+                theme = 'auto',
+                disabled_filetypes = { statusline = { 'startup' } },
             },
-            extensions = { 'nvim-tree' }
-        }
+            extensions = { 'nvim-tree', 'trouble' },
+        },
     },
     {
         'mbbill/undotree',
