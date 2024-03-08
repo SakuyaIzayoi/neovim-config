@@ -22,6 +22,7 @@ return {
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-nvim-lsp',
+            'onsails/lspkind.nvim',
         },
         opts = function()
             local lsp_zero = require('lsp-zero')
@@ -29,6 +30,7 @@ return {
 
             local cmp = require('cmp')
             local cmp_action = require('lsp-zero').cmp_action()
+            local lspkind = require('lspkind')
 
             return {
                 preselect = 'item',
@@ -46,6 +48,14 @@ return {
                     ["<Tab>"] = cmp_action.luasnip_supertab(),
                     ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
                 },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol_text',
+                        maxwidth = 50,
+                        ellipsis_char = '...',
+                        show_labelDetails = true,
+                    })
+                }
             }
         end,
         config = function(_, opts)
