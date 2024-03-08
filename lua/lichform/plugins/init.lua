@@ -90,6 +90,7 @@ return {
     },
     {
         'mbbill/undotree',
+        cmd = { 'UndotreeToggle' },
         keys = {
             { '<leader>u', '<cmd>UndotreeToggle<cr>', desc = "UndoTree" },
         },
@@ -112,18 +113,17 @@ return {
         'kevinhwang91/nvim-ufo',
         dependencies = 'kevinhwang91/promise-async',
         event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+        keys = {
+            { 'zR', function() require('ufo').openAllFolds() end,  desc = 'UFO OpenAllFolds' },
+            { 'zM', function() require('ufo').closeAllFolds() end, desc = 'UFO CloseAllFolds' },
+        },
         config = function()
             vim.o.foldcolumn = '0'
             vim.o.foldlevel = 99
             vim.o.foldlevelstart = 99
             vim.o.foldenable = true
 
-            local ufo = require('ufo')
-
-            vim.keymap.set('n', 'zR', ufo.openAllFolds)
-            vim.keymap.set('n', 'zM', ufo.closeAllFolds)
-
-            ufo.setup()
+            require('ufo').setup()
         end,
     },
     {
