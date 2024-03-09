@@ -23,7 +23,8 @@ map('n', '<leader>k', '<cmd>cnext<CR>zz')
 map('n', '<leader>j', '<cmd>cprev<CR>zz')
 
 -- Grungo
-map('n', 'Q', '<nop>')
+map('n', 'Q', '<nop>', { desc = 'Grungo' })
+map('n', 'q:', '<nop>', { desc = 'Grungo' })
 
 -- Paste buffer trickery
 map('x', '<leader>p', '\"_dP')
