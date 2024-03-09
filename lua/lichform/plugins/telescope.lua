@@ -4,7 +4,19 @@ return {
         tag = '0.1.5',
         cmd = 'Telescope',
         keys = {
-            '<C-p>',
+            { '<C-p>',      function() require('telescope.builtin').git_files() end, desc = 'Telescope Git Files' },
+            {
+                '<leader>ps',
+                function() require('telescope.builtin').grep_string({ search = vim.fn.input('Grep> ') }) end,
+                desc = 'Telescope Git Files'
+            },
+            { '<leader>ff', require('telescope.builtin').find_files,                 desc = 'Telescope Find Files' },
+            { '<leader>fg', require('telescope.builtin').live_grep,                  desc = 'Telescope Live Grep' },
+            { '<leader>fb', require('telescope.builtin').buffers,                    desc = 'Telescope Buffers' },
+            { '<leader>fh', require('telescope.builtin').help_tags,                  desc = 'Telescope Help Tags' },
+            { '<leader>gd', require('telescope.builtin').diagnostics,                desc = 'Telescope Diagnostics' },
+            { '<leader>gk', require('telescope.builtin').keymaps,                    desc = 'Telescope Keymaps' },
+            { '<leader>gr', require('telescope.builtin').registers,                  desc = 'Telescope Registers' },
         },
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -14,21 +26,5 @@ return {
                 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
             },
         },
-        config = function()
-            local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-            vim.keymap.set('n', '<leader>ps', function()
-                builtin.grep_string({ search = vim.fn.input("Grep > ") });
-            end)
-
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
-            vim.keymap.set('n', '<leader>gd', builtin.diagnostics, {})
-            vim.keymap.set('n', '<leader>gk', builtin.keymaps, {})
-            vim.keymap.set('n', '<leader>gr', builtin.registers, {})
-        end
     },
 }
