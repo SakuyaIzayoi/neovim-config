@@ -15,7 +15,7 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-if vim.loop.os_uname().sysname == 'Windows_NT' then
+if vim.uv.os_uname().sysname == 'Windows_NT' then
     local homedir = os.getenv("UserProfile")
     vim.opt.undodir = homedir .. "/.vim/undodir"
     vim.api.nvim_set_current_dir(homedir .. "/Desktop/dev")
