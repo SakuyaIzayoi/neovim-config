@@ -1,7 +1,7 @@
 return {
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
+        version = '0.1.*',
         cmd = 'Telescope',
         keys = {
             { '<C-p>',      function() require('telescope.builtin').git_files() end, desc = 'Telescope Git Files' },

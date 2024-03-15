@@ -40,4 +40,19 @@ return {
             },
         },
     },
+    {
+        'RRethy/nvim-treesitter-textsubjects',
+        main = 'nvim-treesitter.configs',
+        opts = {
+            textsubjects = {
+                enable = true,
+                prev_selection = ',',
+                keymaps = {
+                    ['.'] = 'textsubjects-smart',
+                    [';'] = 'textsubjects-container-outer',
+                    ['i;'] = { 'textsubjects-container', desc = 'Select inside containers (classes, functions, etc.)' },
+                },
+            },
+        },
+    },
 }
