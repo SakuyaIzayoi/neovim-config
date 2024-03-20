@@ -139,7 +139,16 @@ return {
     {
         'mrcjkb/rustaceanvim',
         dependencies = {
-            'mfussenegger/nvim-dap',
+            {
+                'mfussenegger/nvim-dap',
+                keys = {
+                    { '<leader>db', function() require('dap').toggle_breakpoint() end, desc = "DAP Toggle Breakpoint" },
+                    { '<leader>dc', function() require('dap').continue() end, desc = "DAP Continue" },
+                    { '<leader>ds', function() require('dap').step_over() end, desc = "DAP Step Over" },
+                    { '<leader>di', function() require('dap').step_into() end, desc = "DAP Step Into" },
+                    { '<leader>dr', function() require('dap').repl.open() end, desc = "DAP Open REPL" },
+                },
+            },
         },
         ft = 'rust',
         config = function ()
