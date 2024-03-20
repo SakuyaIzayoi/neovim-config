@@ -21,7 +21,7 @@ return {
         'akinsho/bufferline.nvim',
         version = 'v4.5.*',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function() require('bufferline').setup() end,
+        config = true,
     },
     {
         'kylechui/nvim-surround',
@@ -51,7 +51,7 @@ return {
                         color = { fg = '#f6c177' },
                     },
                 },
-                lualine_z = { 'os.date("%a %I:%M%p")' },
+                lualine_z = { 'os.date("%a %-I:%M%P")' },
             },
             options = {
                 theme = 'auto',
@@ -70,9 +70,7 @@ return {
     {
         'lewis6991/gitsigns.nvim',
         event = { 'BufReadPre', 'BufNewFile' },
-        config = function()
-            require('gitsigns').setup()
-        end
+        config = true,
     },
     {
         'folke/trouble.nvim',
@@ -109,7 +107,6 @@ return {
     },
     {
         'folke/neodev.nvim',
-        event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-        config = function() require('neodev').setup({}) end
+        ft = 'lua',
     },
 }
