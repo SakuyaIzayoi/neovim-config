@@ -1,49 +1,50 @@
 -- Keybinds
 local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend('force', options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map('n', '<leader><space>', '<cmd>noh<cr>')
+map("n", "<leader><space>", "<cmd>noh<cr>")
 
 -- Buffer/Window Movement
-map('n', '<A-N>', '<cmd>bnext<cr>')
-map('n', '<A-P>', '<cmd>bprev<cr>')
+map("n", "<A-N>", "<cmd>bnext<cr>")
+map("n", "<A-P>", "<cmd>bprev<cr>")
 
-map('n', '<C-d>', '<C-d>zz')
-map('n', '<C-u>', '<C-u>zz')
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
-map('v', 'J', ":m '>+1<CR>gv=gv")
-map('v', 'K', ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
-map('n', '<leader>k', '<cmd>cnext<CR>zz')
-map('n', '<leader>j', '<cmd>cprev<CR>zz')
+map("n", "<leader>k", "<cmd>cnext<CR>zz")
+map("n", "<leader>j", "<cmd>cprev<CR>zz")
 
 -- Grungo
-map('n', 'Q', '<nop>', { desc = 'Grungo' })
-map('n', 'q:', '<nop>', { desc = 'Grungo' })
+map("n", "Q", "<nop>", { desc = "Grungo" })
+map("n", "q:", "<nop>", { desc = "Grungo" })
 
 -- Paste buffer trickery
-map('x', '<leader>p', '\"_dP')
+map("x", "<leader>p", '"_dP')
 
-vim.keymap.set('n', '<leader>af', function()
-    vim.lsp.buf.format()
+vim.keymap.set("n", "<leader>af", function()
+	vim.lsp.buf.format()
 end)
 
-vim.keymap.set('n', '<leader>qf', function() vim.lsp.buf.code_action() end,
-    { noremap = true, silent = true, desc = 'LSP Code Action' })
+vim.keymap.set("n", "<leader>qf", function()
+	vim.lsp.buf.code_action()
+end, { noremap = true, silent = true, desc = "LSP Code Action" })
 
 -- Neovide keybinds
 if vim.g.neovide then
-    vim.keymap.set('n', '<C-c>', '"+y')
-    vim.keymap.set('n', '<C-v>', '"+P')
-    vim.keymap.set('i', '<C-v>', '<ESC>l"+Pli')
+	vim.keymap.set("n", "<C-c>", '"+y')
+	vim.keymap.set("n", "<C-v>", '"+P')
+	vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli')
 end
 
-vim.keymap.set('n', '<leader>tih', function()
-    vim.g.inlay_hints_enabled = not vim.g.inlay_hints_enabled
-    vim.lsp.inlay_hint.enable(0, vim.g.inlay_hints_enabled)
-end, { noremap = true, silent = true, desc = 'Toggle Inlay Hints' })
+vim.keymap.set("n", "<leader>tih", function()
+	vim.g.inlay_hints_enabled = not vim.g.inlay_hints_enabled
+	vim.lsp.inlay_hint.enable(0, vim.g.inlay_hints_enabled)
+end, { noremap = true, silent = true, desc = "Toggle Inlay Hints" })
