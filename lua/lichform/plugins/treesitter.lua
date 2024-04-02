@@ -3,7 +3,13 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 		main = "nvim-treesitter.configs",
+		dependencies = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+			},
+		},
 		opts = {
 			auto_install = true,
 			highlight = {
