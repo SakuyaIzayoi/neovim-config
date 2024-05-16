@@ -128,11 +128,9 @@ return {
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
 
-			vim.g.inlay_hints_enabled = true
-
-			lsp_zero.on_attach(function(client, bufnr)
+			lsp_zero.on_attach(function(_, bufnr)
 				lsp_zero.default_keymaps({ buffer = bufnr })
-				vim.lsp.inlay_hint.enable(bufnr, true)
+                vim.lsp.inlay_hint.enable(true)
 			end)
 
 			require("mason-lspconfig").setup({

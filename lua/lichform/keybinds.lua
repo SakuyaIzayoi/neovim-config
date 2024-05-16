@@ -45,6 +45,5 @@ if vim.g.neovide then
 end
 
 vim.keymap.set("n", "<leader>tih", function()
-	vim.g.inlay_hints_enabled = not vim.g.inlay_hints_enabled
-	vim.lsp.inlay_hint.enable(0, vim.g.inlay_hints_enabled)
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { noremap = true, silent = true, desc = "Toggle Inlay Hints" })
