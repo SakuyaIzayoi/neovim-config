@@ -130,7 +130,7 @@ return {
 
 			lsp_zero.on_attach(function(_, bufnr)
 				lsp_zero.default_keymaps({ buffer = bufnr })
-                vim.lsp.inlay_hint.enable(true)
+				vim.lsp.inlay_hint.enable(true)
 			end)
 
 			require("mason-lspconfig").setup({
@@ -144,60 +144,6 @@ return {
 					rust_analyzer = lsp_zero.noop,
 				},
 			})
-		end,
-	},
-	{
-		"mrcjkb/rustaceanvim",
-		dependencies = {
-			{
-				"mfussenegger/nvim-dap",
-				keys = {
-					{
-						"<leader>db",
-						function()
-							require("dap").toggle_breakpoint()
-						end,
-						desc = "DAP Toggle Breakpoint",
-					},
-					{
-						"<leader>dc",
-						function()
-							require("dap").continue()
-						end,
-						desc = "DAP Continue",
-					},
-					{
-						"<leader>ds",
-						function()
-							require("dap").step_over()
-						end,
-						desc = "DAP Step Over",
-					},
-					{
-						"<leader>di",
-						function()
-							require("dap").step_into()
-						end,
-						desc = "DAP Step Into",
-					},
-					{
-						"<leader>dr",
-						function()
-							require("dap").repl.open()
-						end,
-						desc = "DAP Open REPL",
-					},
-				},
-			},
-		},
-		ft = "rust",
-		config = function()
-			local lsp_zero = require("lsp-zero")
-			vim.g.rustaceanvim = {
-				server = {
-					capabilities = lsp_zero.get_capabilities(),
-				},
-			}
 		end,
 	},
 }
