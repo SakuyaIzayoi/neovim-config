@@ -29,10 +29,6 @@ map("n", "q:", "<nop>", { desc = "Grungo" })
 -- Paste buffer trickery
 map("x", "<leader>p", '"_dP')
 
-vim.keymap.set("n", "<leader>af", function()
-	vim.lsp.buf.format()
-end)
-
 vim.keymap.set("n", "<leader>qf", function()
 	vim.lsp.buf.code_action()
 end, { noremap = true, silent = true, desc = "LSP Code Action" })
