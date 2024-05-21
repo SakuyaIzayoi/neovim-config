@@ -66,8 +66,11 @@ return {
 						cond = require("lazy.status").has_updates,
 						color = { fg = "#f6c177" },
 					},
+					"encoding",
+					"fileformat",
+					"filetype",
 				},
-				lualine_z = { 'os.date("%a %-I:%M%P")' },
+				lualine_z = { "location", "os.date('%a %-I:%M%P')" },
 			},
 			options = {
 				theme = "auto",
