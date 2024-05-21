@@ -60,6 +60,14 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			sections = {
+				lualine_b = {
+					"branch",
+					"diff",
+					{
+						"diagnostics",
+						sources = { "nvim_lsp" },
+					},
+				},
 				lualine_x = {
 					{
 						require("lazy.status").updates,
@@ -74,6 +82,7 @@ return {
 			},
 			options = {
 				theme = "auto",
+				globalstatus = true,
 				disabled_filetypes = { statusline = { "startup" } },
 			},
 			extensions = { "nvim-tree", "trouble", "lazy", "mason", "oil" },
