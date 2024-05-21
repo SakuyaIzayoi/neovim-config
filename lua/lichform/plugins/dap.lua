@@ -33,6 +33,14 @@ return {
 				"theHamsta/nvim-dap-virtual-text",
 				config = true,
 			},
+            {
+                "folke/which-key.nvim",
+                opts = {
+                    defaults = {
+                        ["<leader>d"] = { name = "+debug" },
+                    },
+                },
+            },
 		},
 		config = function()
 			local dap = require("dap")
