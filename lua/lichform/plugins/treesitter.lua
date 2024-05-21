@@ -37,7 +37,7 @@ return {
 		opts = { mode = "cursor", max_lines = 3 },
 		keys = {
 			{
-				"<leader>cc",
+				"<leader>tc",
 				function()
 					local tsc = require("treesitter-context")
 					tsc.toggle()

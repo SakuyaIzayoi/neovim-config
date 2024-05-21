@@ -28,10 +28,9 @@ return {
 	{
 		"xiyaowong/nvim-transparent",
 		keys = {
-			{ "<leader>tt", "<cmd>TransparentToggle<cr>", desc = "TransparentToggle" },
+			{ "<leader>tt", "<cmd>TransparentToggle<cr>", desc = "Toggle Transparency" },
 		},
-		config = function()
-			require("transparent").setup()
-		end,
+        main = "transparent",
+        config = true,
 	},
 }

@@ -11,7 +11,7 @@ return {
 						function()
 							require("dapui").toggle()
 						end,
-						desc = "Dap UI",
+						desc = "DAP Toggle UI",
 					},
 				},
 				config = function(_, opts)

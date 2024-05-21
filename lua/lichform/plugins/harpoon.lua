@@ -9,7 +9,7 @@ return {
 				function()
 					require("harpoon"):list():add()
 				end,
-				desc = "Harpoon Append",
+				desc = "Harpoon Add",
 			},
 			{
 				"<M-1>",

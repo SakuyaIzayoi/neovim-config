@@ -1,10 +1,5 @@
 return {
-	{
-		"aserowy/tmux.nvim",
-		config = function()
-			require("tmux").setup()
-		end,
-	},
+	{ "aserowy/tmux.nvim", config = true },
 	{ "nathangrigg/vim-beancount", ft = "beancount" },
 	{ "hashivim/vim-terraform", ft = "terraform" },
 	{ "pearofducks/ansible-vim", ft = "yaml" },
@@ -15,9 +10,7 @@ return {
 		keys = {
 			{ "<F8>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
 		},
-		config = function()
-			require("nvim-tree").setup()
-		end,
+		config = true,
 	},
 	{
 		"stevearc/oil.nvim",
@@ -53,17 +46,13 @@ return {
 	{
 		"kylechui/nvim-surround",
 		event = "InsertEnter",
-		config = function()
-			require("nvim-surround").setup()
-		end,
+		config = true,
 	},
 	{
 		"altermo/ultimate-autopair.nvim",
 		event = { "InsertEnter", "CmdlineEnter" },
 		branch = "v0.6",
-		config = function()
-			require("ultimate-autopair").setup()
-		end,
+		config = true,
 	},
 	{ "dstein64/vim-startuptime", cmd = "StartupTime" },
 	{
@@ -91,7 +80,7 @@ return {
 		"mbbill/undotree",
 		cmd = { "UndotreeToggle" },
 		keys = {
-			{ "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "UndoTree" },
+			{ "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Toggle UndoTree" },
 		},
 	},
 	{
@@ -103,7 +92,7 @@ return {
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
-			{ "<leader>xx", "<cmd>TroubleToggle<cr>", noremap = true },
+			{ "<leader>xx", "<cmd>TroubleToggle<cr>", noremap = true, desc = "Toggle Trouble" },
 		},
 	},
 	{
@@ -116,24 +105,23 @@ return {
 				function()
 					require("ufo").openAllFolds()
 				end,
-				desc = "UFO OpenAllFolds",
+				desc = "UFO: OpenAllFolds",
 			},
 			{
 				"zM",
 				function()
 					require("ufo").closeAllFolds()
 				end,
-				desc = "UFO CloseAllFolds",
+				desc = "UFO: CloseAllFolds",
 			},
 		},
-		config = function()
+		init = function()
 			vim.o.foldcolumn = "0"
 			vim.o.foldlevel = 99
 			vim.o.foldlevelstart = 99
 			vim.o.foldenable = true
-
-			require("ufo").setup()
 		end,
+		config = true,
 	},
 	{
 		"startup-nvim/startup.nvim",
@@ -156,18 +144,20 @@ return {
 			vim.o.timeoutlen = 300
 		end,
 		opts = {
-            plugins = {
-                spelling = true
-            },
-            defaults = {
-                ["z"] = { name = "+fold" },
-                ["<leader>f"] = { name = "+file" }
-            }
-        },
-        config = function(_, opts)
-            local wk = require("which-key")
-            wk.setup(opts)
-            wk.register(opts.defaults)
-        end,
+			plugins = {
+				spelling = true,
+			},
+			defaults = {
+				["z"] = { name = "+fold" },
+				["<leader>c"] = { name = "+code" },
+				["<leader>f"] = { name = "+file" },
+				["<leader>t"] = { name = "+toggles" },
+			},
+		},
+		config = function(_, opts)
+			local wk = require("which-key")
+			wk.setup(opts)
+			wk.register(opts.defaults)
+		end,
 	},
 }
