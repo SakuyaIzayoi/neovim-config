@@ -15,9 +15,10 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+local statedir = vim.fn.stdpath("state")
 if vim.uv.os_uname().sysname == "Windows_NT" then
 	local homedir = os.getenv("UserProfile")
-	vim.opt.undodir = homedir .. "/.vim/undodir"
+	vim.opt.undodir = statedir .. "/undodir"
 	vim.api.nvim_set_current_dir(homedir .. "/Desktop/dev")
 
 	-- PowerShell
@@ -28,7 +29,7 @@ if vim.uv.os_uname().sysname == "Windows_NT" then
 	vim.opt.shellpipe = "| Out-File -Encoding UTF8 %s"
 	vim.opt.shellredir = "| Out-File -Encoding UTF8 %s"
 else
-	vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+	vim.opt.undodir = statedir .. "/undodir"
 end
 vim.opt.undofile = true
 
