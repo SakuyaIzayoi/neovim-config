@@ -73,7 +73,7 @@ return {
 				theme = "auto",
 				disabled_filetypes = { statusline = { "startup" } },
 			},
-			extensions = { "nvim-tree", "trouble" },
+			extensions = { "nvim-tree", "trouble", "lazy", "mason", "oil" },
 		},
 	},
 	{
