@@ -124,7 +124,29 @@ return {
 		"neovim/nvim-lspconfig",
 		cmd = { "LspInfo", "LspInstall", "LspStart" },
 		event = { "BufReadPre", "BufNewFile" },
-		config = function()
+		opts = function()
+			local icons = require("lichform.config").icons.diagnostics
+			return {
+				diagnostics = {
+					underline = true,
+					update_in_insert = false,
+					virtual_text = {
+						spacing = 4,
+						source = "if_many",
+					},
+					severity_sort = true,
+					signs = {
+						text = {
+							[vim.diagnostic.severity.ERROR] = icons.Error,
+							[vim.diagnostic.severity.WARN] = icons.Warn,
+							[vim.diagnostic.severity.HINT] = icons.Hint,
+							[vim.diagnostic.severity.INFO] = icons.Info,
+						},
+					},
+				},
+			}
+		end,
+		config = function(_, opts)
 			local lsp_zero = require("lsp-zero")
 			lsp_zero.extend_lspconfig()
 
@@ -144,6 +166,17 @@ return {
 					rust_analyzer = lsp_zero.noop,
 				},
 			})
+
+			vim.diagnostic.config(opts.diagnostics)
+
+			opts.diagnostics.virtual_text.prefix = function(diagnostic)
+				local icons = require("lichform.config").icons.diagnostics
+				for d, icon in pairs(icons) do
+					if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+						return icon
+					end
+				end
+			end
 		end,
 	},
 }
