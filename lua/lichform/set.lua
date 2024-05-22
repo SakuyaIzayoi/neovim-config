@@ -62,12 +62,10 @@ vim.diagnostic.config({
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "*" },
-  callback = function(args)
-    local ft = vim.bo[args.buf].filetype
-    if ft == "lua" then
-      vim.bo.tabstop = 2
-      vim.bo.shiftwidth = 2
-    end
+  pattern = { "lua" },
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
   end,
+  desc = "Set tab width for Lua",
 })
