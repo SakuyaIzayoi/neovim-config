@@ -102,10 +102,16 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
+        branch = "dev",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+        cmd = "Trouble",
 		keys = {
-			{ "<leader>xx", "<cmd>TroubleToggle<cr>", noremap = true, desc = "Toggle Trouble" },
+			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Diagnostics (Trouble)" },
+			{ "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+			{ "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location list (Trouble)" },
+			{ "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list (Trouble)" },
 		},
+        opts = {},
 	},
 	{
 		"kevinhwang91/nvim-ufo",
