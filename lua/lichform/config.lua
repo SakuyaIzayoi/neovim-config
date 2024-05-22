@@ -1,10 +1,10 @@
 return {
-	icons = {
-		diagnostics = {
-			Error = " ",
-			Warn = " ",
-			Hint = " ",
-			Info = " ",
-		},
-	},
+  icons = {
+    diagnostics = {
+      Error = " ",
+      Warn = " ",
+      Hint = " ",
+      Info = " ",
+    },
+  },
 }

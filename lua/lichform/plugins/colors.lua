@@ -30,7 +30,7 @@ return {
 		keys = {
 			{ "<leader>tt", "<cmd>TransparentToggle<cr>", desc = "Toggle Transparency" },
 		},
-        main = "transparent",
-        config = true,
+		main = "transparent",
+		config = true,
 	},
 }

@@ -1,10 +1,10 @@
 -- Keybinds
 local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 map("n", "<leader><space>", "<cmd>noh<cr>", { desc = "Clear highlight" })
@@ -30,16 +30,16 @@ map("n", "q:", "<nop>", { desc = "Grungo" })
 map("x", "<leader>p", '"_dP')
 
 vim.keymap.set("n", "<leader>cq", function()
-	vim.lsp.buf.code_action()
+  vim.lsp.buf.code_action()
 end, { noremap = true, silent = true, desc = "LSP Code Action" })
 
 -- Neovide keybinds
 if vim.g.neovide then
-	vim.keymap.set("n", "<C-c>", '"+y')
-	vim.keymap.set("n", "<C-v>", '"+P')
-	vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli')
+  vim.keymap.set("n", "<C-c>", '"+y')
+  vim.keymap.set("n", "<C-v>", '"+P')
+  vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli')
 end
 
 vim.keymap.set("n", "<leader>ti", function()
-	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 end, { noremap = true, silent = true, desc = "Toggle Inlay Hints" })
