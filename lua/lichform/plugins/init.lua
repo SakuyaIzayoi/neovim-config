@@ -58,35 +58,44 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {
-			sections = {
-				lualine_b = {
-					"branch",
-					"diff",
-					{
-						"diagnostics",
-						sources = { "nvim_lsp" },
+		opts = function()
+			local icons = require("lichform.config").icons.diagnostics
+			return {
+				sections = {
+					lualine_b = {
+						"branch",
+						"diff",
+						{
+							"diagnostics",
+							sources = { "nvim_lsp" },
+							symbols = {
+								error = icons.Error,
+								warn = icons.Warn,
+								info = icons.Info,
+								hint = icons.Hint,
+							},
+						},
 					},
-				},
-				lualine_x = {
-					{
-						require("lazy.status").updates,
-						cond = require("lazy.status").has_updates,
-						color = { fg = "#f6c177" },
+					lualine_x = {
+						{
+							require("lazy.status").updates,
+							cond = require("lazy.status").has_updates,
+							color = { fg = "#f6c177" },
+						},
+						"encoding",
+						"fileformat",
+						"filetype",
 					},
-					"encoding",
-					"fileformat",
-					"filetype",
+					lualine_z = { "location", "os.date('%a %-I:%M%P')" },
 				},
-				lualine_z = { "location", "os.date('%a %-I:%M%P')" },
-			},
-			options = {
-				theme = "auto",
-				globalstatus = true,
-				disabled_filetypes = { statusline = { "startup" } },
-			},
-			extensions = { "nvim-tree", "trouble", "lazy", "mason", "oil" },
-		},
+				options = {
+					theme = "auto",
+					globalstatus = true,
+					disabled_filetypes = { statusline = { "startup" } },
+				},
+				extensions = { "nvim-tree", "trouble", "lazy", "mason", "oil" },
+			}
+		end,
 	},
 	{
 		"mbbill/undotree",
@@ -102,16 +111,16 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
-        branch = "dev",
+		branch = "dev",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-        cmd = "Trouble",
+		cmd = "Trouble",
 		keys = {
 			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Diagnostics (Trouble)" },
 			{ "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
 			{ "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location list (Trouble)" },
 			{ "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix list (Trouble)" },
 		},
-        opts = {},
+		opts = {},
 	},
 	{
 		"kevinhwang91/nvim-ufo",
