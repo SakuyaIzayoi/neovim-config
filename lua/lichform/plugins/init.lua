@@ -117,14 +117,14 @@ return {
 				function()
 					require("ufo").openAllFolds()
 				end,
-				desc = "UFO: OpenAllFolds",
+				desc = "UFO: Open All Folds",
 			},
 			{
 				"zM",
 				function()
 					require("ufo").closeAllFolds()
 				end,
-				desc = "UFO: CloseAllFolds",
+				desc = "UFO: Close All Folds",
 			},
 		},
 		init = function()
