@@ -124,6 +124,7 @@ return {
     "neovim/nvim-lspconfig",
     cmd = { "LspInfo", "LspInstall", "LspStart" },
     event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "folke/neodev.nvim", opts = {} },
     opts = function()
       local icons = require("lichform.config").icons.diagnostics
       return {

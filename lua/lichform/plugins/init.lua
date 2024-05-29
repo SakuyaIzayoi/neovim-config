@@ -160,10 +160,6 @@ return {
     },
   },
   {
-    "folke/neodev.nvim",
-    ft = "lua",
-  },
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     init = function()
