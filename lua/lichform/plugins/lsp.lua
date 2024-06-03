@@ -42,6 +42,7 @@ return {
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
           { name = "buffer", keyword_length = 3 },
+          { name = "lazydev", group_index = 0 },
         },
         mapping = {
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
@@ -119,12 +120,23 @@ return {
     "williamboman/mason-lspconfig.nvim",
     lazy = true,
   },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        "luvit-meta/library",
+      },
+    },
+  },
+  {
+    "Bilal2453/luvit-meta", lazy = true
+  },
   -- LSP
   {
     "neovim/nvim-lspconfig",
     cmd = { "LspInfo", "LspInstall", "LspStart" },
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "folke/neodev.nvim", opts = {} },
     opts = function()
       local icons = require("lichform.config").icons.diagnostics
       return {
