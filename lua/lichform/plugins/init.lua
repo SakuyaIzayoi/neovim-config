@@ -210,8 +210,4 @@ return {
       vim.notify = require("notify")
     end,
   },
-  {
-    "mfussenegger/nvim-ansible",
-    ft = "yaml",
-  },
 }
