@@ -167,20 +167,16 @@ return {
       vim.o.timeoutlen = 300
     end,
     opts = {
-      plugins = {
-        spelling = true,
-      },
-      defaults = {
-        ["z"] = { name = "+fold" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>f"] = { name = "+file" },
-        ["<leader>t"] = { name = "+toggles" },
+      groups = {
+        { "z", group = "fold" },
+        { "<leader>c", group = "code" },
+        { "<leader>f", group = "filecode" },
+        { "<leader>t", group = "toggles" },
       },
     },
     config = function(_, opts)
       local wk = require("which-key")
-      wk.setup(opts)
-      wk.register(opts.defaults)
+      wk.add(opts.groups)
     end,
   },
   {
