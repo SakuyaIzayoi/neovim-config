@@ -46,7 +46,7 @@
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tmux.nvim": { "branch": "main", "commit": "da618e075f42793400c3ee1e59ef3ebada2cb23c" },
   "tree-sitter-just": { "branch": "main", "commit": "379fbe36d1e441bc9414ea050ad0c85c9d6935ea" },
-  "trouble.nvim": { "branch": "dev", "commit": "8a0394ce7c38d961b355160dfc1e4ab77b9a38d7" },
+  "trouble.nvim": { "branch": "main", "commit": "bf99ea71a39e322336b7f8be965f86dbf5c65540" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "035d92eab05ac1390afef7204e3fcad9a50fa443" },
   "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
   "vim-beancount": { "branch": "master", "commit": "25bcbc773554b5798d253a1a5fa5de158792f95e" },
