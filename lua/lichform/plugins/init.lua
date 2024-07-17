@@ -170,8 +170,11 @@ return {
       groups = {
         { "z", group = "fold" },
         { "<leader>c", group = "code" },
+        { "<leader>d", group = "debug" },
         { "<leader>f", group = "filecode" },
+        { "<leader>g", group = "telescope" },
         { "<leader>t", group = "toggles" },
+        { "<leader>x", group = "diagnostics" },
       },
     },
     config = function(_, opts)
