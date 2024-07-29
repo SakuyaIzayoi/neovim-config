@@ -57,7 +57,21 @@ return {
   { "dstein64/vim-startuptime", cmd = "StartupTime" },
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      {
+        "linrongbin16/lsp-progress.nvim",
+        config = function(_, opts)
+          require("lsp-progress").setup(opts)
+          vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+          vim.api.nvim_create_autocmd("User", {
+            group = "lualine_augroup",
+            pattern = "LspProgressStatusUpdated",
+            callback = require("lualine").refresh,
+          })
+        end,
+      }
+    },
     opts = function()
       local icons = require("lichform.config").icons.diagnostics
       return {
@@ -75,6 +89,11 @@ return {
                 hint = icons.Hint,
               },
             },
+          },
+          lualine_c = {
+            function()
+              return require("lsp-progress").progress()
+            end,
           },
           lualine_x = {
             {
