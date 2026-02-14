@@ -1,13 +1,5 @@
 return {
   {
-    "VonHeikemen/lsp-zero.nvim",
-    lazy = true,
-    init = function()
-      vim.g.lsp_zero_extend_cmp = 0
-      vim.g.lsp_zero_extend_lspconfig = 0
-    end,
-  },
-  {
     "williamboman/mason.nvim",
     cmd = "Mason",
     build = ":MasonUpdate",
@@ -25,11 +17,7 @@ return {
       "onsails/lspkind.nvim",
     },
     opts = function()
-      local lsp_zero = require("lsp-zero")
-      lsp_zero.extend_cmp()
-
       local cmp = require("cmp")
-      local cmp_action = require("lsp-zero").cmp_action()
       local lspkind = require("lspkind")
 
       return {
@@ -46,8 +34,6 @@ return {
         },
         mapping = {
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
-          ["<Tab>"] = cmp_action.luasnip_supertab(),
-          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
         },
         formatting = {
           format = lspkind.cmp_format({
@@ -118,14 +104,18 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = true,
+    opts = {},
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
   },
   {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
       library = {
-        "luvit-meta/library",
+        { path = "luvit-meta/library", words = { "vim%.uv" }}
       },
     },
   },
@@ -161,27 +151,10 @@ return {
       }
     end,
     config = function(_, opts)
-      local lsp_zero = require("lsp-zero")
-      lsp_zero.extend_lspconfig()
-
-      lsp_zero.on_attach(function(_, bufnr)
-        lsp_zero.default_keymaps({ buffer = bufnr })
-        vim.lsp.inlay_hint.enable(true)
-      end)
-
-      require("mason-lspconfig").setup({
-        ensure_installed = {},
-        handlers = {
-          lsp_zero.default_setup,
-          lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require("lspconfig").lua_ls.setup(lua_opts)
-          end,
-          rust_analyzer = lsp_zero.noop,
-        },
-      })
-
       vim.diagnostic.config(opts.diagnostics)
+
+      local config = require("lichform.config").lsp
+      vim.lsp.config("lua_ls", config.lua_ls)
 
       opts.diagnostics.virtual_text.prefix = function(diagnostic)
         local icons = require("lichform.config").icons.diagnostics
