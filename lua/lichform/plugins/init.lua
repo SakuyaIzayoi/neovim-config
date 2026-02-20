@@ -105,7 +105,7 @@ return {
             "fileformat",
             "filetype",
           },
-          lualine_z = { "location", "os.date('%a %-I:%M%P')" },
+          lualine_z = { "location", "os.date('%a %I:%M%p')" }
         },
         options = {
           theme = "auto",
