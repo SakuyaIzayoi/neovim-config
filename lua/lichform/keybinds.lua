@@ -43,3 +43,8 @@ end
 vim.keymap.set("n", "<leader>ti", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
 end, { noremap = true, silent = true, desc = "Toggle Inlay Hints" })
+
+vim.keymap.set("n", "<leader>cd", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  vim.api.nvim_set_current_dir(vim.fs.dirname(file))
+end, { noremap = true, silent = true, desc = "Cwd to File" })
