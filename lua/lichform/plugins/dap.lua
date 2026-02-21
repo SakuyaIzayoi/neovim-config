@@ -110,13 +110,5 @@ return {
   {
     "mrcjkb/rustaceanvim",
     ft = "rust",
-    config = function()
-      local lsp_zero = require("lsp-zero")
-      vim.g.rustaceanvim = {
-        server = {
-          capabilities = lsp_zero.get_capabilities(),
-        },
-      }
-    end,
   },
 }
