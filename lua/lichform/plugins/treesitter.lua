@@ -1,17 +1,17 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    lazy = false,
+    branch = "main",
+	build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    main = "nvim-treesitter.configs",
+    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
     },
     opts = {
-      auto_install = true,
       highlight = {
         enable = true,
       },
@@ -33,6 +33,11 @@ return {
         "yaml",
       },
     },
+	config = function(_, opts)
+	  local TS = require("nvim-treesitter")
+	  TS.setup(opts)
+	  TS.install(opts.ensure_installed)
+	end,
   },
   {
     "IndianBoy42/tree-sitter-just",
@@ -40,6 +45,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+	enabled = true,
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = { mode = "cursor", max_lines = 3 },
     keys = {
@@ -55,6 +61,7 @@ return {
   },
   {
     "RRethy/nvim-treesitter-textsubjects",
+	enabled = false,
     main = "nvim-treesitter.configs",
     opts = {
       textsubjects = {
