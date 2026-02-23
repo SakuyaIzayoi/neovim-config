@@ -45,8 +45,7 @@ return {
   },
   {
     "kylechui/nvim-surround",
-    event = "InsertEnter",
-    config = true,
+    event = "VeryLazy",
   },
   {
     "altermo/ultimate-autopair.nvim",
