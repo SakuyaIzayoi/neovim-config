@@ -10,7 +10,9 @@ return {
     keys = {
       { "<F8>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
     },
-    config = true,
+    opts = {
+      sync_root_with_cwd = true,
+    },
   },
   {
     "stevearc/oil.nvim",
